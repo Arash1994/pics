@@ -30,4 +30,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: user/pics:$(date +%s)
+          tags: user/app:latest
