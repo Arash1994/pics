@@ -31,4 +31,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: user/app:latest
+          tags: 9780645751/pics:latest
