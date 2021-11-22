@@ -43,4 +43,4 @@ jobs:
         run: docker pull 9780645751/pics:latest
       - 
         name: Run container
-        run: docker run 9780645751/pics:latest
+        run: docker run -it -p 80:80 -d 9780645751/pics
