@@ -27,8 +27,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: true
-          tags: 9780645751/pics:latest
+        run: docker build . --file Dockerfile --tag pics && docker push pics:latest
