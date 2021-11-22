@@ -27,4 +27,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Build and push
-        run: docker build . --file Dockerfile --tag pics && docker push pics:latest
+        run: docker build . --file Dockerfile --tag 9780645751/pics && docker push 9780645751/pics:test
