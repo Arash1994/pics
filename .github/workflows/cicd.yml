@@ -27,4 +27,26 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Build and push
-        run: docker build . --file Dockerfile --tag 9780645751/pics:test && docker push 9780645751/pics:test
+        run: docker build . --file Dockerfile --tag 9780645751/pics:latest && docker push 9780645751/pics:latest
+  deploy:
+    needs: docker
+    runs-on: self-hosted
+    steps:
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: pull docker image
+        run: docker pull 9780645751/pics:latest
+      - 
+        name: Run container
+        run: docker run 9780645751/pics:latest
